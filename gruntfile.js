@@ -51,6 +51,9 @@ module.exports = function (grunt) {
         files: [
           'hsp/**/*.js',
           'test/**/*.spec.*',
+          'docs/libs/Chart.min.js',
+          'docs/samples/*/*.hsp',
+          'docs/samples/*/*.spec.js',
           'node_modules/sinon/pkg/sinon-ie.js',
           'node_modules/jquery/dist/jquery.min.js',
           'node_modules/sinon/pkg/sinon-ie.js'
@@ -66,6 +69,8 @@ module.exports = function (grunt) {
           'test/lib/*.js': ['commonjs'],
           'test/**/*.spec.js': ['commonjs'],
           'test/**/*.spec.hsp': ['hsp', 'commonjs'],
+          'docs/samples/*/*.hsp': ['hsp', 'commonjs'],
+          'docs/samples/*/*.spec.js': ['commonjs'],
           'node_modules/jquery/dist/jquery.min.js': ['commonjs']
         },
         commonjsPreprocessor: {
@@ -168,14 +173,7 @@ module.exports = function (grunt) {
       },
       unit: {
         singleRun: true,
-        preprocessors: {
-          'hsp/**/*.js': ['commonjs', 'coverage']
-        },
-        reporters: ['progress', 'coverage'],
-        coverageReporter: {
-          type : 'lcov',
-          dir : 'test-results/karma/'
-        }
+        reporters: ['progress', 'coverage']
       },
       tdd: {
         singleRun: false,
