@@ -1,4 +1,4 @@
-# template people(d)
+# export template people(d)
     <div class="msg">Click on a person to see more details:</div>
     <ul>
     {foreach p in d.people}
@@ -27,6 +27,9 @@ var d={
         {name:"Maggie", age:1}
     ]
 }
+
+//export data to be used in tests
+module.exports.data = d;
 
 // display the template in the #output div
 people(d).render("output");
