@@ -1,7 +1,7 @@
 var klass=require("hsp/klass");
 
 // nt is an instance of NumberTester
-# template test(nt)
+# export template test(nt)
 	<div>
 		Number: <span class="textvalue">{nt.number}</span>
 	    {if nt.number==0}
@@ -26,7 +26,7 @@ var klass=require("hsp/klass");
 // klass is a little utility to create a JS object constructor 
 // from a simple JSON structure - main goals are to
 // to simplify prototypal inheritance and ease code reading
-var NumberTester=klass({
+var NumberTester = klass({
     $constructor:function() {
         this.number=0;
     },
@@ -34,6 +34,9 @@ var NumberTester=klass({
         this.number = this.number+nbr2;
     }
 });
+
+//export the utility class for tests
+module.exports.NumberTester = NumberTester;
 
 // display the template in the #output div
 test(new NumberTester()).render("output");
